@@ -1,6 +1,7 @@
 import os
+import flask
 
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 #from flask_socketio import SocketIO, emit
 from models import *
 
@@ -14,9 +15,15 @@ db.init_app(app)
 
 @app.route("/", methods = ["GET", "POST"])
 def index():
-    if method == "POST":
-
-    return render_template("index.html")
+    if flask.request.method == "POST":
+        username = request.form.get('username')
+        password = request.form.get('password')
+        if User.query.filter_by(username = username, password = password).count == 1:
+            return redirect("/register")
+        else:
+            return redirect("/", message = User.query.filter_by(username = username, password = password).count == 1)
+    else:
+        return render_template("index.html")
 
 @app.route("/register")
 def register():
