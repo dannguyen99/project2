@@ -1,7 +1,7 @@
 import os
 import flask
 
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, session
 #from flask_socketio import SocketIO, emit
 from models import *
 
@@ -37,6 +37,7 @@ def register():
         else:
             u = User(username = username, password = password)
             db.session.add(u)
-            redirect("/")
+            db.session.commit()
+            return redirect("/")
     else:
         return render_template("register.html")
