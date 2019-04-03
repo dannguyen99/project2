@@ -19,7 +19,7 @@ def index():
         username = request.form.get('username')
         password = request.form.get('password')
         if User.query.filter_by(username = username, password = password).first() != None:
-            return redirect("/register")
+            return redirect("/channels")
         else:
             return redirect("/")
     else:
@@ -41,3 +41,10 @@ def register():
             return redirect("/")
     else:
         return render_template("register.html")
+
+@app.route("/channels", methods = ["GET", "POST"])
+def channels():
+    if request.method == "POST":
+        return "hello world"
+    else:
+        return render_template("channels.html")
