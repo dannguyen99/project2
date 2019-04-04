@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -10,4 +11,16 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable = False)
     password = db.Column(db.String, nullable = False)
-    
+
+class Message:
+    def __init__(self, username):
+        self.username = username
+        self.time = datetime.now()
+
+class Channels:
+    def __init__(self, name, password, desciption):
+        self.name = name
+        self.password = password
+        self.desciption = desciption
+        self.no_people = 0
+        self.message = []
