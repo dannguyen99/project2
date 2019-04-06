@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.querySelector('#group_name').value;
         const password = document.querySelector('#group_password').value;
         const desciption = document.querySelector('#group_desc').value;
-        request.open('POST', '/channels');
+        request.open('POST', '/create');
 
         // Callback function for when request completes
         request.onload = () => {
@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update the result div
             if (data.success) {
-              allert("Success")
-              document.querySelector('.card-title').innerHTML = data.channel.name
+              allert("Success");
+              document.querySelector('.card-title').innerHTML = data.channel.name;
             }
             else {
                 allert("Error")

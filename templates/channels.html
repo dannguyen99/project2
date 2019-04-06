@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <title>Channels List</title>
   <style media="screen">
     .container{
@@ -46,12 +45,12 @@
                   <label for="message-text" class="col-form-label">Description:</label>
                   <textarea class="form-control" id="message-text" id = "group_desc"></textarea>
                 </div>
-                <button type="button" class = "btn btn-primary">Submit</button>
+                <input type="submit" value="Get Exchange Rate">
               </form>
             </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success">Save changes</button>
+            <button type="submit" class="btn btn-success" id = "submit">Save changes</button>
           </div>
         </div>
       </div>

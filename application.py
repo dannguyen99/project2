@@ -1,8 +1,9 @@
 import os
 import flask
 
-from flask import Flask, render_template, redirect, request, session
+from flask import Flask, render_template, redirect, request, session, jsonify
 #from flask_socketio import SocketIO, emit
+import requests
 from models import *
 
 app = Flask(__name__)
@@ -51,6 +52,15 @@ def channels():
         desc = request.form.get('desciption')
         c = Channels(name, password, desc)
         channels.append(c)
-        return jsonify({"success": True, "rate":c})
+        return jsonify({"success": True, "name":c})
     else:
         return render_template("channels.html")
+
+@app.route("/create", methods = ["POST"])
+def create():
+    name = request.form.get('name')
+    password = request.form.get('password')
+    desc = request.form.get('desciption')
+    c = Channels(name, password, desc)
+    channels.append(c)
+    return jsonify({"success": True, "name":c})
