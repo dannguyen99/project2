@@ -1,9 +1,9 @@
 import os
-import flask
 
+import requests
 from flask import Flask, render_template, redirect, request, session, jsonify
 #from flask_socketio import SocketIO, emit
-import requests
+
 from models import *
 
 app = Flask(__name__)
@@ -13,7 +13,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 #socketio = SocketIO(app)
 
-channels = []
+channels_list = []
 
 @app.route("/", methods = ["GET", "POST"])
 def index():
@@ -47,12 +47,12 @@ def register():
 @app.route("/channels", methods = ["GET", "POST"])
 def channels():
     if request.method == "POST":
-        name = request.form.get('name')
+        name = request.form.get("name")
         password = request.form.get('password')
         desc = request.form.get('desciption')
-        c = Channels(name, password, desc)
-        channels.append(c)
-        return jsonify({"success": True, "name":c})
+        # c = Channel(name, password, desc)
+        channels_list.append(c)
+        return jsonify({"success": True, "name":name})
     else:
         return render_template("channels.html")
 
@@ -62,5 +62,5 @@ def create():
     password = request.form.get('password')
     desc = request.form.get('desciption')
     c = Channels(name, password, desc)
-    channels.append(c)
-    return jsonify({"success": True, "name":c})
+    channels_list.append(c)
+    return jsonify({"success": True, "name":c.name})

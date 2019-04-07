@@ -17,7 +17,7 @@ class Message:
         self.username = username
         self.time = datetime.now()
 
-class Channels:
+class Channel:
     def __init__(self, name, password, desciption):
         self.name = name
         self.password = password
