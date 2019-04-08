@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.success) {
               alert(data.name);
               document.querySelector('.card-title').innerHTML = data.name;
+              document.querySelector('.card-text').innerHTML = data.desc;
             }
             else {
                 alert("Error")
@@ -28,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add data to send with request
         const data = new FormData();
         data.append('name', name);
+        data.append('password',password)
+        data.append('description', description)
 
         // Send request
         request.send(data);

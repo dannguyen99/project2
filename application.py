@@ -50,9 +50,12 @@ def channels():
         name = request.form.get("name")
         password = request.form.get("password")
         desc = request.form.get("description")
-        # c = Channel(name, password, desc)
-        # channels_list.append(c)
-        return jsonify({"success": True, "name":request.form.get("password")})
+        if channel_check(channel_list, name):
+            c = Channel(name, password, desc)
+            channels_list.append(c)
+        else:
+            return jsonify({"success":False})
+        return jsonify({"success": True, "name":name, "desc":desc})
     else:
         return render_template("channels.html")
 

@@ -24,3 +24,12 @@ class Channel:
         self.desciption = desciption
         self.no_people = 0
         self.message = []
+
+    def __str__(self):
+        return self.name
+
+def channel_check(channel_list, name):
+    for i in channel_list:
+        if i.name == name:
+            return false
+    return True
