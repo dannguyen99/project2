@@ -48,19 +48,15 @@ def register():
 def channels():
     if request.method == "POST":
         name = request.form.get("name")
-        password = request.form.get('password')
-        desc = request.form.get('desciption')
+        password = request.form.get("password")
+        desc = request.form.get("description")
         # c = Channel(name, password, desc)
-        channels_list.append(c)
-        return jsonify({"success": True, "name":name})
+        # channels_list.append(c)
+        return jsonify({"success": True, "name":request.form.get("password")})
     else:
         return render_template("channels.html")
 
 @app.route("/create", methods = ["POST"])
 def create():
-    name = request.form.get('name')
-    password = request.form.get('password')
-    desc = request.form.get('desciption')
-    c = Channels(name, password, desc)
-    channels_list.append(c)
-    return jsonify({"success": True, "name":c.name})
+    name = request.form.get("name")
+    return jsonify({"success": True, "name":name})

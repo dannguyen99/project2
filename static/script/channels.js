@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#form').onsubmit = () => {
 
         // Initialize new request
+        const request = new XMLHttpRequest();
         const name = document.querySelector('#group_name').value;
         const password = document.querySelector('#group_password').value;
-        const desciption = document.querySelector('#group_desc').value;
-        const request = new XMLHttpRequest();
+        const description = document.querySelector('#group_desc').value;
         request.open('POST', '/channels');
 
         // Callback function for when request completes
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add data to send with request
         const data = new FormData();
-        data.append('currency', password);
+        data.append('name', name);
 
         // Send request
         request.send(data);
