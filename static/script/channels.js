@@ -20,9 +20,23 @@ document.addEventListener('DOMContentLoaded', () => {
               alert(data.name);
               document.querySelector('.card-title').innerHTML = data.name;
               document.querySelector('.card-text').innerHTML = data.desc;
+              // Create new item for list
+              // <div class="card" style="width: 80%;">
+              var div = document.createElement("div");
+              div.className = "card";
+              div.style = "width:80%";
+              var body = document.createElement('div');
+              body.className = 'card-body'
+              var h5 = document.createElement('h5')
+              h5.className = 'class-title';
+              h5.innerHTML = data.name;
+              body.appendChild(h5);
+              div.appendChild(body)
+              document.querySelector('.container').appendChild(div);
+              // Stop form from submitting
             }
             else {
-                alert("Error")
+                alert("Error: There is a channel with that existing name")
             }
         }
 

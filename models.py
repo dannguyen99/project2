@@ -31,5 +31,5 @@ class Channel:
 def channel_check(channel_list, name):
     for i in channel_list:
         if i.name == name:
-            return false
+            return False
     return True

@@ -50,7 +50,7 @@ def channels():
         name = request.form.get("name")
         password = request.form.get("password")
         desc = request.form.get("description")
-        if channel_check(channel_list, name):
+        if channel_check(channels_list, name):
             c = Channel(name, password, desc)
             channels_list.append(c)
         else:
