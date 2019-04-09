@@ -63,3 +63,7 @@ def channels():
 def create():
     name = request.form.get("name")
     return jsonify({"success": True, "name":name})
+
+@app.route("/channels/<string:channel_name>")
+def channel(channel_name):
+    return render_template("channels.html", chat_channels = channels_list)
