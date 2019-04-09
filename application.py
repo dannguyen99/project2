@@ -57,7 +57,7 @@ def channels():
             return jsonify({"success":False})
         return jsonify({"success": True, "name":name, "desc":desc})
     else:
-        return render_template("channels.html")
+        return render_template("channels.html", chat_channels = channels_list)
 
 @app.route("/create", methods = ["POST"])
 def create():

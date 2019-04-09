@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const request = new XMLHttpRequest();
         const name = document.querySelector('#group_name').value;
         const password = document.querySelector('#group_password').value;
-        const description = document.querySelector('#group_desc').value;
+        const description = document.querySelector('#message-text').value;
         request.open('POST', '/channels');
 
         // Callback function for when request completes
@@ -17,11 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update the result div
             if (data.success) {
-              alert(data.name);
-              document.querySelector('.card-title').innerHTML = data.name;
-              document.querySelector('.card-text').innerHTML = data.desc;
+              alert("Success");
               // Create new item for list
-              // <div class="card" style="width: 80%;">
               var div = document.createElement("div");
               div.className = "card";
               div.style = "width:80%";
@@ -29,10 +26,26 @@ document.addEventListener('DOMContentLoaded', () => {
               body.className = 'card-body'
               var h5 = document.createElement('h5')
               h5.className = 'class-title';
-              h5.innerHTML = data.name;
+              h5.innerHTML = name
+              var cardtext = document.createElement('p');
+              cardtext.className = "card-text";
+              cardtext.innerHTML = description;
+              var go = document.createElement('a');
+              go.className = 'btn btn-primary';
+              go.innerHTML = 'Go to the chat room';
+              var del = document.createElement('a');
+              del.className = 'btn btn-danger';
+              del.innerHTML = 'Delete this group';
               body.appendChild(h5);
-              div.appendChild(body)
+              body.appendChild(cardtext);
+              body.appendChild(go);
+              body.appendChild(del);
+              div.appendChild(body);
               document.querySelector('.container').appendChild(div);
+              // <p class="card-text">{{ channel.description }}</p>
+              // <a class="btn btn-primary">Go to the chat room</a>
+              // <a class="btn btn-danger">Delete this group</a>
+              $('#exampleModal').modal('hide');
               // Stop form from submitting
             }
             else {
