@@ -2,7 +2,7 @@ import os
 
 import requests
 from flask import Flask, render_template, redirect, request, session, jsonify
-#from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit
 
 from models import *
 
@@ -11,7 +11,7 @@ app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
-#socketio = SocketIO(app)
+socketio = SocketIO(app)
 
 channels_list = []
 
@@ -66,4 +66,4 @@ def create():
 
 @app.route("/channels/<string:channel_name>")
 def channel(channel_name):
-    return render_template("channels.html", chat_channels = channels_list)
+    return render_template("channel.html")
