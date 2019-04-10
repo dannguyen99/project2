@@ -13,9 +13,10 @@ class User(db.Model):
     password = db.Column(db.String, nullable = False)
 
 class Message:
-    def __init__(self, username):
+    def __init__(self, username, chat):
         self.username = username
         self.time = datetime.now()
+        self.chat = chat
 
 class Channel:
     def __init__(self, name, password, desciption):
