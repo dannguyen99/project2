@@ -9,6 +9,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <style>
+
           body{
             background: #005C97;  /* fallback for old browsers */
             background: -webkit-linear-gradient(to right, #363795, #005C97);  /* Chrome 10-25, Safari 5.1-6 */
@@ -17,6 +18,9 @@
         </style>
     </head>
     <body>
+      <div id = "logout" style ="text-align: right; margin-bottom: 40px">
+            <a class = "btn btn-danger" href="{{ url_for('signout') }}">Log out</a>
+        </div>
         {% block body %}
 
         {% endblock %}
