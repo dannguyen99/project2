@@ -34,3 +34,7 @@ def channel_check(channel_list, name):
         if i.name == name:
             return False
     return True
+def addMessage(channel_list, channel, message):
+    for i in channel_list:
+        if i.name == channel:
+            i.message.append(message)

@@ -55,20 +55,13 @@
       </div>
     </div>
 
-    <!-- <form id="form">
-        <input id="group_name" autocomplete="off" autofocus placeholder="Group name" type="text">
-        <input id="group_password" autocomplete="off" placeholder="Group Password" type="text">
-        <input id="group_desc" autocomplete="off" autofocus placeholder="Group desciption" type="text">
-        <input type="submit" value="Submit">
-    </form> -->
-
     {% for channel in chat_channels %}
     <div class="card" style="width: 80%;">
       <img src="..." class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{ channel.name }}</h5>
         <p class="card-text">{{ channel.description }}</p>
-        <a class="btn btn-primary">Go to the chat room</a>
+        <a class="btn btn-primary" href="{{ url_for('channels') }}/{{ channel.name }}">Go to the chat room</a>
         <a class="btn btn-danger">Delete this group</a>
       </div>
     </div>

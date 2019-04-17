@@ -67,9 +67,15 @@ def create():
 
 @app.route("/channels/<string:channel_name>")
 def channel(channel_name):
-    return render_template("channel.html")
+    if channel_check(channels_list, channel_name):
+        return "Error: Invalid channel name"
+    else:
+        for i in channels_list:
+            if i.name == channel_name:
+                return render_template("channel.html",this_channel = i)
 
 @socketio.on("submit message")
 def send(data):
     m = Message("dan",data["mess"])
-    emit("announce message", {"mess": m.chat, "user":m.username, "time":m.time}, broadcast=True)
+    addMessage(channels_list, data['title'], m)
+    emit("announce message", {"mess": m.chat, "user":m.username, "time":str(m.time.hour) +":"+ str(m.time.minute)}, broadcast=True)
