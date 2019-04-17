@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
               cardtext.innerHTML = description;
               var go = document.createElement('a');
               go.className = 'btn btn-primary';
+              go.href = "http://127.0.0.1:5000/channels/" + name;
               go.innerHTML = 'Go to the chat room';
               var del = document.createElement('a');
               del.className = 'btn btn-danger';

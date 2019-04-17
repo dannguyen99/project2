@@ -72,10 +72,10 @@ def channel(channel_name):
     else:
         for i in channels_list:
             if i.name == channel_name:
-                return render_template("channel.html",this_channel = i)
+                return render_template("channel.html",this_channel = i, length = len(i.message))
 
 @socketio.on("submit message")
 def send(data):
-    m = Message("dan",data["mess"])
-    addMessage(channels_list, data['title'], m)
+    m = Message(data["user"],data["mess"])
+    a = addMessage(channels_list, data['title'], m)
     emit("announce message", {"mess": m.chat, "user":m.username, "time":str(m.time.hour) +":"+ str(m.time.minute)}, broadcast=True)

@@ -1,3 +1,4 @@
+localStorage.setItem('channel', document.title);
 document.addEventListener('DOMContentLoaded', () => {
 
       // Connect to websocket
@@ -9,19 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
           // Each button should emit a "submit vote" event
           document.querySelector('#form').onsubmit = () => {
                   const message = document.querySelector('#mess').value;
-                  document.querySelector('#mess').innerHTML = "";
+                  const user = localStorage.getItem('username');
+                  document.querySelector('#mess').value = "";
                   const title = document.title;
-                  socket.emit('submit message', {'mess': message, 'title':title});
+                  socket.emit('submit message', {'mess': message, 'title':title, 'user':user});
                   return false;
               };
           });
 
-      // When a new vote is announced, add to the unordered list
-      // <div class="container darker">
-      //   <img src="{{ url_for('static', filename='images/avatar1.jpg') }}" alt="Avatar" class="right">
-      //   <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-      //   <span class="time-left">11:05</span>
-      //   </div>
       socket.on('announce message', data => {
         const div = document.createElement('div');
         div.className = "container darker";

@@ -37,7 +37,7 @@
     </div>
   {% for mess in this_channel.message %}
   <div class="container darker">
-    <img src="{{ url_for('static', filename='images/avatar1.jpg') }}" alt="Avatar" class="right">
+    <img src="https://png.pngtree.com/svg/20160826/5edcf67c9c.svg" alt="Avatar" class="right">
     <h6>{{ mess.username }}</h6>
     <p>{{ mess.chat }}</p>
     <span class="time-left">{{ mess.time }}</span>
@@ -47,8 +47,14 @@
 </div>
 <div class="container">
   <form id = "form">
-    <input type="text" name="chat" id = "mess">
+     <div class="form-row">
+       <div class="col-10">
+      <input type="text" id = "mess" autofocus ="autofocus" class = "form-control">
+      </div>
+      <div class="col">
     <input type="submit" class="btn btn-success" value="submit">
+    </div>
+    </div>
   </form>
 </div>
 {% endblock %}
