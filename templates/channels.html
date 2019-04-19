@@ -24,6 +24,18 @@
       <a href="" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Create new group</a>
     </div>
 
+    {% for channel in chat_channels %}
+    <div class="card" style="width: 80%;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ channel.name }}</h5>
+        <p class="card-text">{{ channel.description }}</p>
+        <a class="btn btn-primary" href="{{ url_for('channels') }}/{{ channel.name }}">Go to the chat room</a>
+        <button class="btn btn-danger" value = "{{ channel.name }}">Delete this group</button>
+      </div>
+    </div>
+    {% endfor %}
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -50,25 +62,13 @@
                 </div>
             </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <input type="submit" class="btn btn-success" id = "submit" value = "Save changes" >
           </div>
           </form>
         </div>
       </div>
     </div>
-
-    {% for channel in chat_channels %}
-    <div class="card" style="width: 80%;">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{ channel.name }}</h5>
-        <p class="card-text">{{ channel.description }}</p>
-        <a class="btn btn-primary" href="{{ url_for('channels') }}/{{ channel.name }}">Go to the chat room</a>
-        <a class="btn btn-danger">Delete this group</a>
-      </div>
-    </div>
-    {% endfor %}
 </div>
 
   </div>

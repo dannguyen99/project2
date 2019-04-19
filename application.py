@@ -79,3 +79,6 @@ def send(data):
     m = Message(data["user"],data["mess"])
     a = addMessage(channels_list, data['title'], m)
     emit("announce message", {"mess": m.chat, "user":m.username, "time":str(m.time.hour) +":"+ str(m.time.minute)}, broadcast=True)
+
+@app.route("/delete", methods = ["POST"])
+def delete():

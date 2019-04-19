@@ -64,15 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
         request.send(data);
         return false;
     };
-    \
-    'JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf
-    querySelector'
+
 
     document.querySelectorAll('button.btn.btn-danger').forEach(button => {
               button.onclick = () => {
-                  const selection = button.dataset.vote;
-                  socket.emit('submit vote', {'selection': selection});
+                  const name = button.value;
+                  request.open('POST', '/channels');
               };
           });
-      });
 });
