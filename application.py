@@ -60,11 +60,6 @@ def channels():
     else:
         return render_template("channels.html", chat_channels = channels_list)
 
-@app.route("/create", methods = ["POST"])
-def create():
-    name = request.form.get("name")
-    return jsonify({"success": True, "name":name})
-
 @app.route("/channels/<string:channel_name>")
 def channel(channel_name):
     if channel_check(channels_list, channel_name):
@@ -82,3 +77,9 @@ def send(data):
 
 @app.route("/delete", methods = ["POST"])
 def delete():
+    name = request.form.get('name')
+    for i in channels_list:
+        if i.name == name:
+            channels_list.remove(i)
+            return jsonify({"success":True})
+    return jsonify({"success":False})

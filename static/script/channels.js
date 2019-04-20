@@ -68,8 +68,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('button.btn.btn-danger').forEach(button => {
               button.onclick = () => {
+                  const request = new XMLHttpRequest();
                   const name = button.value;
-                  request.open('POST', '/channels');
+                  request.open('POST', '/delete');
+
+                  request.onload = () => {
+                  const data = JSON.parse(request.responseText);
+                  if (data.success) {
+                    button.parentElement.parentElement.style.display = "None";
+                  }
               };
-          });
+              const data = new FormData();
+              data.append('name', name);
+              request.send(data);
+              return false;
+          };
+});
 });
